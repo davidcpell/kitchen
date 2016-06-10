@@ -4,12 +4,13 @@ package "yum" do
 end
 
 package node["packages"]["redhat"]
+package "git"
 
-git ".rbenv" do
-  action :sync
-  destination node["user_home"]
+git node["rbenv_dir"] do
   repository "https://github.com/rbenv/rbenv.git"
+  reference "master"
   user "david"
+  action :sync
 end
 
 
