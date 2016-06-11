@@ -1,7 +1,7 @@
 home = Dir.home("david")
 
-default["user"] = {
-  "home" => home,
+default["user_dirs"] = {
+  "home"     => home,
   "code"     => File.join(home, "code"),
   "dotfiles" => File.join(home, "code", "dotfiles")
 }
@@ -11,6 +11,13 @@ default["oh-my-zsh"] = {
 }
 
 default["dotfiles"] = {
-  "repo" => "https://github.com/davidcpell/dotfiles.git"
+  "repo" => "https://github.com/davidcpell/dotfiles.git",
+  "linkable" => ["zshrc", "vimrc", "tmux.conf"]
 }
 
+default["vim"] = {
+  "vundle_path" => File.join(home, ".vim", "bundle", "Vundle.vim"),
+  "theme" => "molokai.vim",
+  "theme_url" => "https://raw.githubusercontent.com/tomasr/molokai/master/colors/molokai.vim",
+  "root"  => File.join(home, ".vim")
+}
