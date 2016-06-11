@@ -1,11 +1,7 @@
-home = node["user_dirs"]["home"]
+home     = node["user_dirs"]["home"]
 vim_root = node["vim"]["root"]
 
 package %w(vim the_silver_searcher)
-
-link File.join(home, ".vimrc") do 
-  to File.join(node["user_dirs"]["dotfiles"], "vimrc")
-end
 
 [vim_root, "#{vim_root}/bundle", "#{vim_root}/colors"].each do |dir|
   directory dir do 

@@ -11,6 +11,7 @@ default["oh-my-zsh"] = {
 }
 
 default["dotfiles"] = {
+  "path" => File.join(home, "code", "dotfiles"),
   "repo" => "https://github.com/davidcpell/dotfiles.git",
   "linkable" => ["zshrc", "vimrc", "tmux.conf"]
 }
