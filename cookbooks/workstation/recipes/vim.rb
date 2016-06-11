@@ -26,6 +26,8 @@ execute "download vim theme" do
 end
 
 execute "install vim plugins" do
+  not_if (Dir[File.join(vim_root, "bundle", "*")].count > 1).to_s
+
   user "david"
   cwd  home
   environment "HOME" => home
