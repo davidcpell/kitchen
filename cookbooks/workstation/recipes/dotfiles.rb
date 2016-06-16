@@ -12,7 +12,7 @@ git "dotfiles" do
 end
 
 node["dotfiles"]["linkable"].each do |ln_target|
-  link File.join(home, ".#{ln_target}") do 
+  link File.join(node["user"]["home"], ".#{ln_target}") do 
     to File.join(node["dotfiles"]["path"], ln_target)
   end
 end

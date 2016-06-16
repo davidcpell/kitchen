@@ -1,10 +1,10 @@
 home = node["user_dirs"]["home"]
 
-package "zsh"
+package %w(zsh git)
 
 user "david" do
-  shell  "/bin/zsh"
   action :create
+  shell  "/bin/zsh"
 end
 
 git File.join(home, ".oh-my-zsh") do
