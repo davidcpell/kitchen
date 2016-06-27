@@ -52,3 +52,5 @@ Desktop.ini
 $RECYCLE.BIN/
 
 .chef/syntaxcache*
+.kitchen/
+.kitchen.local.yml
