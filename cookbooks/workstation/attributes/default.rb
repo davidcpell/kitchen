@@ -1,4 +1,4 @@
-home = Dir.home("david")
+home = ENV['HOME'].gsub(/[a-z]+\z/, "david")
 
 default["user_dirs"] = {
   "home"     => home,
