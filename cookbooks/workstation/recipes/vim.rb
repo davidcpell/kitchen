@@ -1,7 +1,13 @@
 home     = node["user_dirs"]["home"]
 vim_root = node["vim"]["root"]
 
-package %w(vim the_silver_searcher)
+package 'vim'
+
+if node['platform_family'] == 'debian'
+  package 'silversearcher-age'
+else
+  package 'epel-release.noarch', 'the_silver_searcher'
+end 
 
 [vim_root, "#{vim_root}/bundle", "#{vim_root}/colors"].each do |dir|
   directory dir do 

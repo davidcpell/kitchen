@@ -1,7 +1,7 @@
-home = ENV['HOME'].gsub(/[a-z]+\z/, "david")
+home = "/home/david"
 
 default["user_dirs"] = {
-  "home"     => home,
+  "home"     => "/home/david",
   "code"     => File.join(home, "code"),
   "dotfiles" => File.join(home, "code", "dotfiles")
 }

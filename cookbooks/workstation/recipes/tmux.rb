@@ -1,6 +1,6 @@
 tmux_dir = File.join("/usr/local", "tmux")
 
-package %w(automake libevent-devel)
+package %w(automake libevent-devel gcc ncurses-devel)
 
 git "tmux" do
   destination tmux_dir
