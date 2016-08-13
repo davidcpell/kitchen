@@ -1,13 +1,20 @@
 home     = node["user_dirs"]["home"]
 vim_root = node["vim"]["root"]
+family   = node['platform_family']
+
+if family == 'debian'
+  bash 'update apt' do 
+    command 'apt-get -y update'
+  end
+end
 
 package 'vim'
 
-if node['platform_family'] == 'debian'
-  package 'silversearcher-age'
+if family == 'debian'
+  package 'silversearcher-ag'
 else
   package 'epel-release.noarch', 'the_silver_searcher'
-end 
+end
 
 [vim_root, "#{vim_root}/bundle", "#{vim_root}/colors"].each do |dir|
   directory dir do 
@@ -23,12 +30,12 @@ git node["vim"]["vundle_path"] do
 end
 
 execute "download vim theme" do
-  not_if File.exist?(File.join(vim_root, "colors", node["vim"]["theme"])).to_s
+  not_if { File.exist?(File.join(vim_root, "colors", node["vim"]["theme"])) }
 
   user "david"
   cwd  home
   environment "HOME" => home
-  command "curl -o #{vim_root}/colors/#{node["vim"]["theme"]} #{node["vim"]["theme_url"]}"
+  command "wget -O #{vim_root}/colors/#{node["vim"]["theme"]} #{node["vim"]["theme_url"]}"
 end
 
 execute "install vim plugins" do

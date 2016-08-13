@@ -1,9 +1,12 @@
-# centos
-package "yum" do 
-  action :upgrade
+family = node['platform_family']
+
+if family == 'rhel'
+  package "yum" do 
+    action :upgrade
+  end
 end
 
-package node["packages"]["redhat"]
+package node["packages"][family]
 package "git"
 
 git node["rbenv_dir"] do
@@ -12,6 +15,3 @@ git node["rbenv_dir"] do
   user       "david"
   action     :sync
 end
-
-
-

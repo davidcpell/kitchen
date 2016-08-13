@@ -1,9 +1,9 @@
 require 'spec_helper'
 
 describe 'ruby' do
-  ruby_v = 'runuser -l david -c "PATH=/home/david/.rbenv/shims:$PATH ruby -v"'
+  ruby_dir = File.join(Dir.home('david'), '.rbenv', 'versions', '2.3.1')
 
-  describe command(ruby_v) do 
-    its(:stdout) { puts `whoami`; should match /2.3.1/ }
+  describe file(ruby_dir) do 
+    it { should be_directory }
   end
 end

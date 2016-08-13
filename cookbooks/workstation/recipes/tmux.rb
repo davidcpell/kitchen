@@ -1,6 +1,12 @@
 tmux_dir = File.join("/usr/local", "tmux")
 
-package %w(automake libevent-devel gcc ncurses-devel)
+package ['automake', 'gcc']
+
+if node['platform_family'] == 'rhel'
+  package ['libevent-devel', 'ncurses-devel']
+elsif node['platform_family'] == 'debian'
+  package ['libevent-dev', 'ncurses-dev', 'pkg-config']
+end
 
 git "tmux" do
   destination tmux_dir
